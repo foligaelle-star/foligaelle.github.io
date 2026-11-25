@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Autobot</title>
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#0A0D0E"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Schibsted+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F4F6F7;--card:#fff;--card2:#E9EEEF;--ink:#101517;--mute:#667579;--acc:#1B7F8C;--accfg:#fff;--ok:#12805C;--bad:#C93550;--line:#DDE3E5;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0A0D0E;--card:#161C1E;--card2:#232B2E;--ink:#EEF3F4;--mute:#8FA0A4;--acc:#58C4D1;--accfg:#0A0D0E;--ok:#4FD1A1;--bad:#FF7A90;--line:#263135}}
+:root[data-theme="dark"]{--bg:#0A0D0E;--card:#161C1E;--card2:#232B2E;--ink:#EEF3F4;--mute:#8FA0A4;--acc:#58C4D1;--accfg:#0A0D0E;--ok:#4FD1A1;--bad:#FF7A90;--line:#263135}
+*{box-sizing:border-box}[hidden]{display:none!important}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 "Schibsted Grotesk",system-ui,sans-serif}
+header{max-width:640px;margin:auto;padding:12px 14px 0;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:"Instrument Serif",Georgia,serif;font-size:28px;letter-spacing:-.01em}
+.hb{position:relative;width:42px;height:42px;border-radius:50%;background:var(--card2);color:var(--ink);padding:0;font-size:18px}
+.hb i,#bd{position:absolute;top:-3px;right:-3px;min-width:18px;height:18px;border-radius:9px;background:var(--bad);color:#fff;font:700 11px/18px "Schibsted Grotesk",sans-serif;text-align:center;font-style:normal}
+main{max-width:640px;margin:auto;padding:8px 16px 140px}
+#home{display:flex;flex-direction:column}
+#hero{text-align:center;padding:9vh 8px 20px}
+#hero h1{margin:0;font:400 38px/1.12 "Instrument Serif",Georgia,serif;letter-spacing:-.01em}
+.car{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -16px;padding:4px 16px 10px;scrollbar-width:none}
+.cd{flex:0 0 78%;scroll-snap-align:center;text-align:left;border-radius:24px;padding:18px;min-height:150px;color:#14181A;font-size:19px;line-height:1.25;font-weight:600}
+#cc{display:flex;flex-direction:column;align-items:flex-end;gap:8px;margin:6px 0 14px}
+.pl{background:var(--card2);color:var(--ink);font-weight:500;border-radius:20px;padding:9px 16px}
+.th #hero,.th .car,.th #cc{display:none}.th #thr{order:-1}
+#comp{order:5}.th #comp{position:fixed;left:0;right:0;bottom:0;padding:18px 16px calc(10px + env(safe-area-inset-bottom,0px));background:linear-gradient(transparent,var(--bg) 35%);z-index:5}
+.cb{max-width:640px;margin:auto;background:var(--card);border:1px solid var(--line);border-radius:28px;padding:6px 8px;display:flex;align-items:center;gap:6px}
+.cb:focus-within{border-color:var(--acc)}
+#in{flex:1;border:0;outline:0;resize:none;background:transparent;color:var(--ink);font:inherit;height:44px;padding:10px 4px}
+button{font:inherit;cursor:pointer;border:0;border-radius:10px;padding:9px 14px;background:var(--acc);color:var(--accfg);font-weight:600}
+button.g{background:transparent;color:var(--acc);border:1px solid var(--line)}
+button.x{background:transparent;color:var(--bad);padding:6px 8px}
+button.ic{width:40px;height:40px;border-radius:50%;padding:0;font-size:18px;flex:none}
+button.ic.g{color:var(--mute)}button.ic.on{background:var(--bad);color:#fff;border-color:var(--bad)}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.q{font:400 30px/1.15 "Instrument Serif",Georgia,serif;margin:22px 0 10px}
+.a{margin-bottom:8px}.a p{margin:0 0 8px}
+.act{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:12px;padding:10px 12px;margin-top:8px}
+.act.un{opacity:.5}.act b{display:block}.m{color:var(--mute);font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px}
+h2{font-size:18px;margin:0 0 10px;font-weight:700}
+h3{font:400 30px/1.1 "Instrument Serif",Georgia,serif;margin:14px 0 10px}
+label{display:block;font-size:13px;color:var(--mute);margin:8px 0 3px}
+input,select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px}
+.seg{display:flex;gap:6px;margin:6px 0 12px}.seg button{flex:1;background:var(--card);color:var(--mute);border:1px solid var(--line)}.seg button.on{background:var(--acc);color:var(--accfg);border-color:var(--acc)}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.it{display:flex;gap:10px;align-items:flex-start;justify-content:space-between;padding:10px 0;border-top:1px solid var(--line)}
+.it:first-of-type{border-top:0}.it b{display:block}
+.done{text-decoration:line-through;opacity:.55}.ok{color:var(--ok)}.bad{color:var(--bad)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.big{font-size:26px;font-weight:800;letter-spacing:-.02em}
+.sg{display:flex;gap:4px;margin:6px 0 12px}.sg i{flex:1;height:4px;border-radius:2px;background:var(--card2)}.sg i.f{background:#FF6B4A}
+.rc{background:#FF6B4A;color:#1A0C07;border-radius:28px;padding:20px;min-height:58vh;display:flex;flex-direction:column}
+.rc .big2{font:400 40px/1.08 "Instrument Serif",Georgia,serif;margin:14px 0 10px;overflow-wrap:anywhere}
+.rc p{margin:0 0 8px;font-size:17px}.rc .rt{font-weight:700;font-size:14px}
+.rc .row{margin-top:auto;padding-top:14px}
+.dk{background:#1A0C07;color:#FFE9E0}.g2{background:rgba(26,12,7,.14);color:#1A0C07}
+.mn{display:flex;flex-direction:column;gap:6px;margin-top:10px;background:rgba(26,12,7,.14);border-radius:16px;padding:10px}
+.mn button{background:transparent;color:#1A0C07;text-align:left}
+.tg{display:flex;justify-content:space-between;align-items:center;gap:12px}
+#dr{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:20}
+#dr aside{width:84%;max-width:340px;height:100%;background:var(--bg);padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(16px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:12px;overflow-y:auto}
+.pf b{display:block;font-size:20px}
+.s4{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.s4 button{position:relative;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:16px;padding:14px 8px;font-weight:500}
+.s4 span{display:block;font-size:22px}
+.lk{background:transparent;color:var(--ink);text-align:left;font-weight:500;padding:12px 6px;border-radius:10px}
+.nc{margin-top:auto;background:var(--ink);color:var(--bg);border-radius:24px;padding:13px}
+#t{position:fixed;left:50%;bottom:100px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:20px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:30;white-space:nowrap}
+#t.s{opacity:1;pointer-events:auto}#t button{background:transparent;color:var(--bg);text-decoration:underline;padding:0 0 0 8px}
+@media(prefers-reduced-motion:reduce){#t{transition:none}}
+</style></head><body>
+<header><button class="hb" aria-label="Menu" onclick="$('#dr').hidden=false">☰<i id="b1" hidden></i></button><span class="logo">autobot</span><button class="hb" aria-label="Radar" onclick="go('radar')">◎<i id="b2" hidden></i></button></header>
+<main>
+<section id="home">
+<div id="hero"><h1 id="gr"></h1></div>
+<div class="car" id="car"></div><div id="cc"></div>
+<div id="comp"><div class="cb"><button class="ic g" aria-label="Ajouter" onclick="go('lib')">+</button><textarea id="in" rows="1" placeholder="Demande-moi ce que tu veux…"></textarea><button id="mic" class="ic g" hidden aria-label="Dicter" onclick="mic()">🎤</button><button class="ic" aria-label="Envoyer" onclick="send()">↑</button></div></div>
+<div id="thr"></div>
+</section>
+<section id="sc" hidden></section>
+</main>
+<div id="dr" hidden onclick="if(event.target===this)this.hidden=true"><aside>
+<div class="pf"><b id="pn">Autobot</b><span class="m">Forfait gratuit</span></div>
+<div class="s4"><button onclick="go('rt')"><span>⟳</span>Routines</button><button onclick="go('lib')"><span>☰</span>Bibliothèque</button><button onclick="go('cn')"><span>⌁</span>Connecter</button><button onclick="go('radar')"><span>◎</span>Radar<i id="bd" hidden></i></button></div>
+<button class="lk" onclick="go('home')">Accueil</button><button class="lk" onclick="go('bil')">Bilan</button><button class="lk" onclick="go('st')">Réglages</button>
+<button class="nc" onclick="T=[];sel=-1;go('home')">Nouveau chat</button>
+</aside></div>
+<div id="t" role="status"></div>
+<script>
+var S={posts:[],ev:[],tx:[],cur:'',name:'',rt:{},sz:{},dm:{}},view='home',seg='ev',T=[],sm=null,dc=null,ls='idle',uid=1,sel=-1,sn=0,r=0,RL=[],tt,$=function(s){return document.querySelector(s)};
+try{S=Object.assign(S,JSON.parse(localStorage.getItem('autobot')||'{}'))}catch(e){}
+function save(){try{localStorage.setItem('autobot',JSON.stringify(S))}catch(e){}}
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function fmt(t){return esc(t).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').split(/\n+/).map(function(p){return'<p>'+p+'</p>'}).join('')}
+function fd(d){return d?new Date(d).toLocaleString('fr-FR',{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}):'Sans date'}
+function mo(n){return n.toLocaleString('fr-FR',{maximumFractionDigits:2})+(S.cur?' '+esc(S.cur):'')}
+function mt(n){return n.toLocaleString('fr-FR',{maximumFractionDigits:2})+(S.cur?' '+S.cur:'')}
+function toast(m,u){var t=$('#t');t.innerHTML=esc(m)+(u?'<button onclick="UN()">Annuler</button>':'');window.UN=function(){u&&u();t.className=''};t.className='s';clearTimeout(tt);tt=setTimeout(function(){t.className=''},u?5000:1800)}
+function val(id){return $('#'+id).value.trim()}
+function copy(x){try{navigator.clipboard.writeText(x).then(function(){toast('Copié')},function(){toast('Copie impossible')})}catch(e){toast('Copie impossible')}}
+function share(t){if(navigator.share){navigator.share({text:t}).catch(function(){})}else{copy(t)}}
+function loc(d){return new Date(d.getTime()-d.getTimezoneOffset()*6e4).toISOString().slice(0,16)}
+function vd(d){return typeof d==='string'&&/^\d{4}-\d\d-\d\dT\d\d:\d\d/.test(d)&&!isNaN(new Date(d))}
+var NET=['Instagram','TikTok','Facebook','LinkedIn','WhatsApp','X'],CAT=['Alimentation','Transport','Abonnements','Travail','Autre'];
+var RT={bilan:{n:'Bilan du soir',how:'Chaque soir après 18 h, Autobot te propose ton bilan dans le Radar : posts, agenda et budget du jour. Le Radar se met à jour quand tu ouvres Autobot.'},pr:{n:'Un post par jour',how:'Si aucun post n’est prévu aujourd’hui, le Radar te le signale et Autobot propose de rédiger le texte. Le Radar se met à jour quand tu ouvres Autobot.'},semaine:{n:'Résumé du dimanche',how:'Le dimanche, le Radar te propose le résumé de ta semaine : posts, agenda et dépenses.'}};
+var CARDS=[{c:'#FFD36B',t:'Tu veux un bilan chaque soir avec tes posts, ton agenda et ton budget ?',rt:'bilan'},{c:'#9EE6C9',t:'Un post par jour sur tes réseaux ? Je prépare l’idée et le texte.',rt:'pr'},{c:'#9CC9FF',t:'Chaque dimanche, un résumé de ta semaine et de tes dépenses ?',rt:'semaine'},{c:'#F4A6CF',t:'Dis-moi une dépense ou un rendez-vous, je le note tout de suite.',q:'J’ai dépensé 2 000 pour le déjeuner'}];
+$('#in').addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send()}});
+function go(v){view=v;r=0;sn=0;$('#dr').hidden=true;draw();window.scrollTo(0,0)}
+function nz(s){return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')}
+var DJ=['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
+var PT=[function(t){return 'Aujourd’hui, on parle de '+t+' : voici 3 choses à retenir. 👇'},function(t){return 'Question du jour : que savez-vous vraiment sur '+t+' ? Répondez en commentaire.'},function(t){return t+' en 30 secondes : l’essentiel, sans jargon. Enregistrez ce post pour plus tard.'}];
+function cat(n){return/transport|taxi|bus|moto|essence|carburant|voiture|train/.test(n)?'Transport':/mang|dejeuner|diner|repas|courses|nourriture|resto|pain|cantine|boisson/.test(n)?'Alimentation':/abonnement|forfait|netflix|internet|data|spotify|canal/.test(n)?'Abonnements':/travail|bureau|materiel|client/.test(n)?'Travail':'Autre'}
+function ttl(s){s=s.replace(/\s+/g,' ').replace(/[.!?]+$/,'').trim();for(var i=0;i<4;i++){s=s.replace(/^(rappelle[- ]moi|rappelle|ajoute|note|mets|mettre|programme|cree|creer|fixe|planifie)\s*/i,'').replace(/^(moi |de |d'|d’|que |qu'|qu’|a |à |le |la |l'|l’|un |une |mon |ma |dans |pour |au |en |sur |vers |agenda |l'agenda |l’agenda )/i,'');s=s.replace(/\s+(a|à|le|vers|pour|de|au|dans)$/i,'').trim()}return s?s[0].toUpperCase()+s.slice(1):''}
+function bt(){var now=Date.now(),w=7*864e5,pp=S.posts.filter(function(p){return p.ok}).length,pl=S.posts.length-pp,ne=S.ev.filter(function(e){var t=new Date(e.d).getTime();return t>=now&&t<=now+w}).length,m0=new Date();m0.setDate(1);m0.setHours(0,0,0,0);var I=0,O=0;S.tx.forEach(function(x){if(new Date(x.d)>=m0){x.k==='in'?I+=x.a:O+=x.a}});return '**Ton bilan**\nPosts publiés : '+pp+' · à publier : '+pl+'\nÉvénements dans les 7 prochains jours : '+ne+'\nCe mois : revenus '+mt(I)+', dépenses '+mt(O)+', solde '+mt(I-O)+'.'}
+function local(q){
+var o=q.trim(),n=nz(o);
+function rm(re){var m=n.match(re);if(!m)return null;o=o.slice(0,m.index)+' '+o.slice(m.index+m[0].length);n=n.slice(0,m.index)+' '+n.slice(m.index+m[0].length);return m}
+if(/^(bonjour|salut|coucou|hello|bonsoir)\b/.test(n))return{reply:'Salut'+(S.name?' '+S.name:'')+' ! Dis-moi ce que je dois noter : un rendez-vous, une dépense ou un post.',actions:[]};
+if(/bilan|resume|recap/.test(n))return{reply:bt(),actions:[]};
+if(/\bsolde\b|combien (il )?(me )?reste/.test(n)){var I=0,O=0;S.tx.forEach(function(x){x.k==='in'?I+=x.a:O+=x.a});return{reply:'Ton solde total est de **'+mt(I-O)+'** (revenus '+mt(I)+', dépenses '+mt(O)+').',actions:[]}}
+var am=n.match(/(\d[\d\s.,]*\d|\d)/),mv=/(depens|achet|pay|coute|investi)/.test(n),iv=/(recu|gagn|touch|salaire|revenu|encaiss|vendu|rentre)/.test(n);
+if((mv||iv)&&am){var s=am[1].replace(/\s/g,'');if(/\.\d{3}$/.test(s))s=s.replace('.','');var a=parseFloat(s.replace(',','.'));if(a>0){var c=cat(n),k=iv&&!mv?'in':'out';return{reply:(k==='in'?'Revenu':'Dépense')+' de **'+mt(a)+'** enregistré(e) (catégorie '+c+').',actions:[{type:'tx',amount:a,kind:k,category:c}]}}}
+var d=new Date(),f=0,hh=null,mm=0,now=new Date();
+if(rm(/apres[- ]demain/)){d.setDate(d.getDate()+2);f=1}else if(rm(/\bdemain\b/)){d.setDate(d.getDate()+1);f=1}else if(rm(/aujourd.?hui/)){f=1}else{var md=rm(/dans (\d+) jours?/);if(md){d.setDate(d.getDate()+(+md[1]));f=1}else{for(var i=0;i<7&&!f;i++){if(rm(new RegExp('\\b'+DJ[i]+'\\b'))){d.setDate(d.getDate()+((i-d.getDay()+7)%7||7));f=1}}}}
+var mh=rm(/(\d{1,2})\s*(?:heures?|h|:)\s*(\d{2})?/);if(mh){hh=+mh[1];mm=mh[2]?+mh[2]:0;if(hh>23)hh=null}
+function fin(h0){var x=new Date(d);x.setHours(hh==null?h0:hh,mm,0,0);if(!f&&x<now)x.setDate(x.getDate()+1);return loc(x)}
+if(/\bpost\b|publication|\bpublier\b/.test(n)&&/(programm|redig|prepar|ecri|cree|fais|genere|mets|propose)/.test(n)){var nw='Instagram';NET.forEach(function(x){if(n.indexOf(nz(x))>=0)nw=x});
+var tp=(o.replace(/\s+/g,' ').match(/(?:sur|propos de|parle de|autour de)\s+(.+?)[.!?]*$/i)||[])[1],tx=PT[Math.floor(Math.random()*3)](tp||'ton sujet'),dt=fin(18);
+return{reply:'Voilà un post '+nw+' prêt à publier, programmé '+fd(dt)+' :\n'+tx,actions:[{type:'post',text:tx,network:nw,date:dt}]}}
+if(f||hh!=null){var t=ttl(o)||'Rappel',dt2=fin(9);return{reply:'C’est noté : **'+t+'**, '+fd(dt2)+'.',actions:[{type:'event',title:t,date:dt2}]}}
+return{reply:'Je n’ai pas bien compris. Essaie par exemple :\n« J’ai dépensé 3 500 pour le transport »\n« Rappelle-moi la réunion vendredi à 10h »\n« Programme un post Instagram demain à 18h sur les limites de suites »\n« Fais-moi le bilan de ma semaine »',actions:[]}}
+
+function send(t){var q=(typeof t==='string'?t:$('#in').value).trim();if(!q)return;$('#in').value='';var m={id:uid++,q:q,st:'l',acts:[]};T.push(m);view='home';draw();ask(m)}
+function ask(m){setTimeout(function(){var x=local(m.q);m.st='d';m.r=x.reply;apply(m,x.actions);draw()},250)}
+function apply(m,A){if(!Array.isArray(A))return;A.slice(0,5).forEach(function(a){var o;
+if(a.type==='event'&&a.title&&vd(a.date)){o={t:String(a.title),d:a.date};S.ev.push(o);m.acts.push({arr:'ev',o:o,l:'Ajouté à l’agenda',s:o.t+' · '+fd(o.d)})}
+else if(a.type==='post'&&a.text){o={t:String(a.text),n:NET.indexOf(a.network)>=0?a.network:'Instagram',d:vd(a.date)?a.date:'',ok:0};S.posts.push(o);m.acts.push({arr:'posts',o:o,l:'Post programmé',s:o.n+' · '+fd(o.d)})}
+else if(a.type==='tx'&&Number(a.amount)>0){o={a:Number(a.amount),k:a.kind==='in'?'in':'out',c:CAT.indexOf(a.category)>=0?a.category:'Autre',d:new Date().toISOString()};S.tx.push(o);m.acts.push({arr:'tx',o:o,l:o.k==='in'?'Revenu enregistré':'Dépense enregistrée',s:mt(o.a)+' · '+o.c})}});save()}
+function undo(id,j){var m=T.filter(function(x){return x.id===id})[0],a=m.acts[j],i=S[a.arr].indexOf(a.o);if(i>=0)S[a.arr].splice(i,1);a.u=1;save();draw()}
+var SR=window.SpeechRecognition||window.webkitSpeechRecognition,rc=null;
+function mic(){if(!SR)return;if(ls==='listening'){rc.stop();return}rc=new SR();rc.lang='fr-FR';rc.onresult=function(e){var i=$('#in');i.value=(i.value?i.value+' ':'')+e.results[0][0].transcript};rc.onstart=function(){ls='listening';$('#mic').className='ic on'};rc.onend=function(){ls='idle';$('#mic').className='ic g'};rc.onerror=function(){toast('Micro indisponible')};rc.start()}
+function rad(){var n=Date.now(),R=[],day=new Date().toDateString(),h=new Date().getHours(),today=loc(new Date()).slice(0,10);
+function ok(k){return!(S.sz[k]>n)&&S.dm[k]!==day}
+S.posts.forEach(function(p){if(p.ok||!p.d)return;var k='p|'+p.d+'|'+p.t.slice(0,24);if(new Date(p.d).getTime()<=n&&ok(k))R.push({k:k,t:p.n+' : c’est l’heure de publier',d:p.t,a:'post',b:'Publier',o:p})});
+S.ev.forEach(function(e){var t=new Date(e.d).getTime(),k='e|'+e.d+'|'+e.t;if(t>=n-36e5&&t<=n+864e5&&ok(k))R.push({k:k,t:e.t,d:fd(e.d),a:'ev'})});
+if(S.rt.bilan&&h>=18&&ok('r|bilan'))R.push({k:'r|bilan',t:'Et si on faisait ton bilan du jour ?',d:'Posts, agenda et budget en un coup d’œil.',a:'bilan',b:'Lancer le bilan'});
+if(S.rt.pr&&!S.posts.some(function(p){return p.d&&p.d.slice(0,10)===today})&&ok('r|pr'))R.push({k:'r|pr',t:'Aucun post prévu aujourd’hui',d:'Je peux te proposer un texte prêt à publier.',a:'pr',b:'Rédiger avec Autobot'});
+if(S.rt.semaine&&new Date().getDay()===0&&ok('r|semaine'))R.push({k:'r|semaine',t:'Le résumé de ta semaine est prêt',d:'Posts, agenda et dépenses des sept derniers jours.',a:'semaine',b:'Voir le résumé'});
+return R}
+function rdv(){RL=rad();if(r>=RL.length)r=0;var h='<div class="rd">';
+if(!RL.length){$('#sc').innerHTML='<div class="rc"><div class="rt">Radar</div><div class="big2">Rien d’urgent.</div><p>Ton Radar est vide. Active des routines ou programme un post, et je te le signale ici.</p><div class="row"><button class="dk" onclick="go(\'rt\')">Voir les routines</button></div></div>';return}
+var x=RL[r];h+='<div class="sg">'+RL.map(function(_,i){return'<i class="'+(i<=r?'f':'')+'"></i>'}).join('')+'</div><div class="rc"><div class="rt">Radar · '+(r+1)+'/'+RL.length+'</div><div class="big2">'+esc(x.t)+'</div><p>'+esc(x.d)+'</p>'+(x.b?'<div class="row" style="margin-top:0"><button class="dk" onclick="rdAct()">'+esc(x.b)+'</button></div>':'')+'<div class="row"><button class="g2" onclick="sn=!sn;rdv()">⏰ Me le rappeler</button><button class="g2" onclick="rdSk()">Passer</button><button class="dk" onclick="rdOk()">✓ Fait</button></div>';
+if(sn)h+='<div class="mn"><span class="m" style="color:#1A0C07">Me le rappeler</span>'+['dans 30 minutes','dans 1 heure','dans 3 heures','demain'].map(function(l,i){return'<button onclick="rdSz('+i+')">'+l+'</button>'}).join('')+'</div>';
+$('#sc').innerHTML=h+'</div></div>'}
+function rdAct(){var x=RL[r],q={bilan:'Fais-moi le bilan de ma journée',pr:'Rédige un post pour aujourd’hui et programme-le à 18h',semaine:'Fais-moi le résumé de ma semaine'}[x.a];if(x.a==='post'){share(x.o.t);return}S.dm[x.k]=new Date().toDateString();save();send(q)}
+function rdOk(){var x=RL[r];if(x.a==='post')x.o.ok=1;else S.dm[x.k]=new Date().toDateString();save();toast('Fait');r=0;draw()}
+function rdSk(){r=(r+1)%RL.length;sn=0;draw()}
+function rdSz(i){var x=RL[r],d=new Date(),u=Date.now()+[18e5,36e5,108e5][i],l=['dans 30 minutes','dans 1 heure','dans 3 heures','demain'][i];if(i===3){d.setDate(d.getDate()+1);d.setHours(8,0,0,0);u=d.getTime()}var k=x.k;S.sz[k]=u;save();sn=0;r=0;toast('Je te le rappelle '+l,function(){delete S.sz[k];save();draw()});draw()}
+function rtv(){var h='<h3>Routines</h3><p class="m">Les routines apparaissent dans ton Radar à l’ouverture d’Autobot.</p>';
+Object.keys(RT).forEach(function(k){h+='<div class="card"><div class="tg"><div><b>'+RT[k].n+'</b><span class="m">'+esc(RT[k].how)+'</span></div><button class="'+(S.rt[k]?'':'g')+'" onclick="S.rt[\''+k+'\']=S.rt[\''+k+'\']?0:1;save();draw()">'+(S.rt[k]?'Active':'Activer')+'</button></div></div>'});$('#sc').innerHTML=h}
+function cnv(){var h='<h3>Connecter</h3><p class="m">Autobot n’est pas encore branché à tes comptes. Voici ce qui est prévu.</p>';
+[['WhatsApp','Messages programmés, résumés des conversations'],['Gmail','Emails urgents et réponses'],['Google Agenda','Synchronisation de ton agenda'],['Metricool','Publication programmée sur tes réseaux']].forEach(function(c){h+='<div class="card tg"><div><b>'+c[0]+'</b><span class="m">'+c[1]+'</span></div><span class="m">Bientôt</span></div>'});
+$('#sc').innerHTML=h+'<div class="card tg"><div><b>Partage du téléphone</b><span class="m">Le bouton Publier envoie ton post vers l’app de ton choix</span></div><span class="ok">Actif</span></div>'}
+function stv(){$('#sc').innerHTML='<h3>Réglages</h3><div class="card"><label for="sn">Ton prénom</label><input id="sn" value="'+esc(S.name)+'" onchange="S.name=this.value.trim();save();draw()"><label for="su">Devise des montants</label><input id="su" value="'+esc(S.cur)+'" placeholder="ex. €, FCFA" onchange="S.cur=this.value.trim();save()"></div>'}
+function draw(){
+var n=rad().length;['b1','b2','bd'].forEach(function(i){$('#'+i).hidden=!n;$('#'+i).textContent=n});
+$('#home').hidden=view!=='home';$('#sc').hidden=view==='home';$('#comp').hidden=view!=='home';$('#mic').hidden=!SR;
+$('#pn').textContent=S.name||'Autobot';
+$('#gr').textContent='On fait quoi aujourd’hui'+(S.name?', '+S.name:'')+' ?';
+$('#home').className=T.length?'th':'';
+$('#car').innerHTML=CARDS.map(function(c,i){return'<button class="cd" style="background:'+c.c+'" onclick="sel='+i+';draw()">'+esc(c.t)+'</button>'}).join('');
+var cd=CARDS[sel];$('#cc').innerHTML=!cd?'':cd.rt?'<button class="pl" onclick="cYes()">Oui, active-la</button><button class="pl" onclick="cHow()">Comment ça marche ?</button><button class="pl" onclick="sel=-1;draw()">Pas maintenant</button>':'<button class="pl" onclick="send(CARDS[sel].q)">Essayer</button><button class="pl" onclick="sel=-1;draw()">Une autre fois</button>';
+$('#thr').innerHTML=T.map(function(m){var h='<div class="q">'+esc(m.q)+'</div><div class="a">'+(m.st==='l'?'<span class="m">Autobot réfléchit…</span>':fmt(m.r));
+m.acts.forEach(function(a,j){h+='<div class="act'+(a.u?' un':'')+'"><div><b>'+esc(a.l)+'</b><span class="m">'+esc(a.s)+'</span></div>'+(a.u?'':'<button class="g" onclick="undo('+m.id+','+j+')">Annuler</button>')+'</div>'});return h+'</div>'}).join('');
+if(view==='radar')rdv();if(view==='rt')rtv();if(view==='cn')cnv();if(view==='st')stv();if(view==='lib')lib();if(view==='bil')bil();
+if(view==='home'&&T.length)window.scrollTo(0,document.body.scrollHeight)}
+function cYes(){var c=CARDS[sel];S.rt[c.rt]=1;save();sel=-1;toast('Routine activée');draw()}
+function cHow(){var c=CARDS[sel];T.push({id:uid++,q:'Comment ça marche ?',st:'d',r:RT[c.rt].how,acts:[]});sel=-1;draw()}
+function lib(){var h='<div class="seg">'+[['ev','Agenda'],['posts','Posts'],['tx','Finances']].map(function(k){return'<button class="'+(seg===k[0]?'on':'')+'" onclick="seg=\''+k[0]+'\';lib()">'+k[1]+'</button>'}).join('')+'</div>';
+if(seg==='ev'){h+='<div class="card"><h2>Nouvel événement</h2><label for="et">Titre</label><input id="et"><label for="ed">Date et heure</label><input id="ed" type="datetime-local"><div class="row"><button onclick="addE()">Ajouter</button></div></div><div class="card"><h2>À venir</h2>';
+var E=S.ev.map(function(p,i){return[p,i]}).sort(function(a,b){return a[0].d>b[0].d?1:-1});
+h+=E.length?E.map(function(x){return'<div class="it"><div><b>'+esc(x[0].t)+'</b><span class="m">'+fd(x[0].d)+'</span></div><button class="x" aria-label="Supprimer" onclick="del(\'ev\','+x[1]+')">✕</button></div>'}).join(''):'<p class="m">Ton agenda est vide. Dis à Autobot ce qu’il doit noter, ou ajoute-le ici.</p>';h+='</div>'}
+if(seg==='posts'){h+='<div class="card"><h2>Nouveau post</h2><label for="pt">Texte</label><textarea id="pt" rows="3"></textarea><label for="pn2">Réseau</label><select id="pn2">'+NET.map(function(n){return'<option>'+n+'</option>'}).join('')+'</select><label for="pd">Date et heure prévues</label><input id="pd" type="datetime-local"><div class="row"><button onclick="addP()">Ajouter</button></div></div><div class="card"><h2>Posts prévus</h2>';
+var P=S.posts.map(function(p,i){return[p,i]}).sort(function(a,b){return(a[0].d||'z')>(b[0].d||'z')?1:-1});
+h+=P.length?P.map(function(x){var p=x[0],i=x[1];return'<div class="it"><div><b class="'+(p.ok?'done':'')+'">'+esc(p.t)+'</b><span class="m">'+esc(p.n)+' · '+fd(p.d)+'</span><div class="row"><button class="g" onclick="share(S.posts['+i+'].t)">Publier</button><button class="g" onclick="okP('+i+')">'+(p.ok?'Rouvrir':'Fait')+'</button></div></div><button class="x" aria-label="Supprimer" onclick="del(\'posts\','+i+')">✕</button></div>'}).join(''):'<p class="m">Aucun post. Demande à Autobot d’en rédiger un.</p>';h+='</div>'}
+if(seg==='tx'){var I=0,O=0;S.tx.forEach(function(x){x.k==='in'?I+=x.a:O+=x.a});
+h+='<div class="card"><div class="grid"><div><span class="m">Revenus</span><div class="big ok">'+mo(I)+'</div></div><div><span class="m">Dépenses</span><div class="big bad">'+mo(O)+'</div></div></div><p class="m">Solde : <b>'+mo(I-O)+'</b></p></div><div class="card"><h2>Nouvelle opération</h2><label for="xa">Montant</label><input id="xa" type="number" inputmode="decimal" min="0"><label for="xk">Type</label><select id="xk"><option value="out">Dépense</option><option value="in">Revenu</option></select><label for="xc">Catégorie</label><select id="xc">'+CAT.map(function(c){return'<option>'+c+'</option>'}).join('')+'</select><div class="row"><button onclick="addX()">Enregistrer</button></div></div><div class="card"><h2>Historique</h2>';
+h+=S.tx.length?S.tx.map(function(x,i){return[x,i]}).reverse().map(function(y){var x=y[0];return'<div class="it"><div><b class="'+(x.k==='in'?'ok':'bad')+'">'+(x.k==='in'?'+':'−')+mo(x.a)+'</b><span class="m">'+esc(x.c)+' · '+new Date(x.d).toLocaleDateString('fr-FR')+'</span></div><button class="x" aria-label="Supprimer" onclick="del(\'tx\','+y[1]+')">✕</button></div>'}).join(''):'<p class="m">Aucune opération enregistrée.</p>';h+='</div>'}
+$('#sc').innerHTML=h}
+function bil(){var now=Date.now(),w=7*864e5,pp=S.posts.filter(function(p){return p.ok}).length,pl=S.posts.length-pp;
+var ne=S.ev.filter(function(e){var t=new Date(e.d).getTime();return t>=now&&t<=now+w});
+var m0=new Date();m0.setDate(1);m0.setHours(0,0,0,0);var I=0,O=0;S.tx.forEach(function(x){if(new Date(x.d)>=m0){x.k==='in'?I+=x.a:O+=x.a}});
+window._b='Bilan Autobot\nPosts publiés : '+pp+' · à publier : '+pl+'\nÉvénements dans 7 jours : '+ne.length+'\nCe mois, revenus : '+mt(I)+' · dépenses : '+mt(O)+' · solde : '+mt(I-O);
+$('#sc').innerHTML='<h3>Bilan</h3><div class="card"><div class="grid"><div><span class="m">Posts publiés</span><div class="big">'+pp+'</div></div><div><span class="m">Posts à publier</span><div class="big">'+pl+'</div></div><div><span class="m">Événements (7 jours)</span><div class="big">'+ne.length+'</div></div><div><span class="m">Solde du mois</span><div class="big '+(I-O>=0?'ok':'bad')+'">'+mo(I-O)+'</div></div></div><div class="row"><button onclick="copy(window._b)">Copier le bilan</button><button class="g" onclick="send(\'Fais-moi le bilan de ma semaine\')">Analyser avec Autobot</button></div></div><div class="card"><h2>Prochains événements</h2>'+(ne.length?ne.map(function(e){return'<div class="it"><div><b>'+esc(e.t)+'</b><span class="m">'+fd(e.d)+'</span></div></div>'}).join(''):'<p class="m">Rien de prévu cette semaine.</p>')+'</div>'}
+function del(k,i){S[k].splice(i,1);save();lib()}
+function addP(){var t=val('pt');if(!t){toast('Écris le texte du post');return}S.posts.push({t:t,n:$('#pn2').value,d:$('#pd').value,ok:0});save();lib();toast('Post ajouté')}
+function okP(i){S.posts[i].ok=S.posts[i].ok?0:1;save();lib()}
+function addE(){var t=val('et'),d=val('ed');if(!t||!d){toast('Titre et date requis');return}S.ev.push({t:t,d:d});save();lib();toast('Événement ajouté')}
+function addX(){var a=parseFloat(val('xa'));if(!(a>0)){toast('Entre un montant');return}S.tx.push({a:a,k:$('#xk').value,c:$('#xc').value,d:new Date().toISOString()});save();lib();toast('Enregistré')}
+draw();
+if('serviceWorker' in navigator){try{navigator.serviceWorker.register('sw.js')}catch(e){}}
+</script></body></html>
